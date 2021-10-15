@@ -1,17 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Header = () => {
-    return(
-        <HeaderStyle>
-            <p>Blogger Pro</p>
-            <MenuStyle>
-                <li><Link to="/">Login</Link></li>
-                <li><Link to="view">View</Link></li>
-                <li><Link to="logout">Logout</Link></li>
-            </MenuStyle>
-        </HeaderStyle>
+    const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem("token")));
+
+    return (
+        <Router>
+            <HeaderStyle>
+                <p>Blogger Pro</p>
+                <MenuStyle>
+                    {isLoggedIn ? null : <li><Link to="/">Login</Link></li>}
+                    {isLoggedIn ? <li><Link to="view">View</Link></li> : null}
+                    {isLoggedIn ? <li><Link to="logout">Logout</Link></li> : null}
+                </MenuStyle>
+            </HeaderStyle>
+        </Router>
     );
 }
 

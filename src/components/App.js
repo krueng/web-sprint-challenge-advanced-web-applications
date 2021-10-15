@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Redirect } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 import styled from 'styled-components';
 
@@ -10,16 +10,27 @@ import Login from './Login';
 import Logout from './Logout';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem("token")));
+
+  const onLoggedIn = () => setIsLoggedIn(true);
+  const onLoggedOut = () => setIsLoggedIn(false);
+
   return (
-    <AppContainer>
-      <LambdaHeader/>
-      <Header/>
-      <RouteContainer>
-        <Route exact path="/">
-          <Login/>
-        </Route>          
-      </RouteContainer>
-    </AppContainer>
+    <Router>
+      <AppContainer>
+        <LambdaHeader />
+        <Header />
+
+        <RouteContainer>
+          <Switch>
+            <PrivateRoute path="/view" component={View} />
+            <PrivateRoute path="/logout" render={props => <Logout {...props} onLoggedIn={onLoggedOut} />} />
+            <Route path="/login" render={props => <Login {...props} onLoggedIn={onLoggedIn} />} />
+            <Route exact path="/" render={props => <Login {...props} onLoggedIn={onLoggedIn} />} />
+          </Switch>
+        </RouteContainer>
+      </AppContainer>
+    </Router>
   )
 }
 
