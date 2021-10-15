@@ -24,7 +24,7 @@ const App = () => {
         <RouteContainer>
           <Switch>
             <PrivateRoute path="/view" component={View} />
-            <PrivateRoute path="/logout" render={props => <Logout {...props} onLoggedIn={onLoggedOut} />} />
+            <PrivateRoute path="/logout" render={props => <Logout {...props} onLoggedOut={onLoggedOut} />} />
             <Route path="/login" render={props => <Login {...props} onLoggedIn={onLoggedIn} />} />
             <Route exact path="/" render={props => <Login {...props} onLoggedIn={onLoggedIn} />} />
           </Switch>
