@@ -1,12 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
-const Login = () => {
-    
-    return(<ComponentContainer>
+const initialCredentials = {
+    username: 'Lambdaa',
+    password: 'School',
+    error: ''
+}
+
+const Login = (props) => {
+    const [state, setState] = useState(initialCredentials);
+
+    const handleChange = e => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    const login = e => {
+        e.preventDefault();
+        axios.post("http://localhost:5000/api/login", state)
+            .then(resp => {
+                localStorage.setItem("token", resp.data.token);
+                localStorage.setItem("password", state.password);
+                localStorage.setItem("username", state.username);
+                props.onLoggedIn();
+                setState(initialCredentials);
+                props.history.push('/view');
+            })
+            .catch(err => {
+                console.log(err);
+                setState({
+                    ...state,
+                    error: 'Not a match, all fields are required!'
+                });
+            });
+
+    };
+
+    return (<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
+            <div>
+                <form onSubmit={login}>
+                    <input
+                        id="username"
+                        type="text"
+                        name="username"
+                        value={state.username}
+                        onChange={handleChange}
+                    />
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        value={state.password}
+                        onChange={handleChange}
+                    />
+                    <button id="submit">Log in</button>
+                </form>
+            </div>
+            <p id='error'>{state.error}</p>
         </ModalContainer>
     </ComponentContainer>);
 }
@@ -33,6 +89,10 @@ const ModalContainer = styled.div`
     background: white;
     padding: 2rem;
     text-align: center;
+    
+    p{
+        color: crimson;
+    }
 `
 
 const Label = styled.label`

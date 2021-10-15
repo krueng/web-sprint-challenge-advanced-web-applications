@@ -10,7 +10,7 @@ const Header = () => {
             <HeaderStyle>
                 <p>Blogger Pro</p>
                 <MenuStyle>
-                    {isLoggedIn ? null : <li><Link to="/">Login</Link></li>}
+                    {isLoggedIn ? null : <li><Link to="/login">Login</Link></li>}
                     {isLoggedIn ? <li><Link to="view">View</Link></li> : null}
                     {isLoggedIn ? <li><Link to="logout">Logout</Link></li> : null}
                 </MenuStyle>
