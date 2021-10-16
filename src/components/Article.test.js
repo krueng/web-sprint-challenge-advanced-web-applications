@@ -27,9 +27,13 @@ test('renders headline, author from the article when passed in through props', (
 
     const headline = screen.getByTestId('headline');
     const author = screen.getByTestId('author');
+    const summary = screen.getByTestId('summary');
+    const body = screen.getByTestId('body');
 
     expect(headline).toBeInTheDocument();
     expect(author).toBeInTheDocument();
+    expect(summary).toBeInTheDocument();
+    expect(body).toBeInTheDocument();
 });
 
 test('renders "Associated Press" when no author is given', () => {

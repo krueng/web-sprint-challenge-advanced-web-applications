@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const initialCredentials = {
-    username: 'Lambdaa',
-    password: 'School',
+    username: '',
+    password: '',
     error: ''
 }
 

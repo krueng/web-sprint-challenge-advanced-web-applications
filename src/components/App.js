@@ -19,12 +19,12 @@ const App = () => {
     <Router>
       <AppContainer>
         <LambdaHeader />
-        <Header />
+        <Header isLoggedIn={isLoggedIn} />
 
         <RouteContainer>
           <Switch>
             <PrivateRoute path="/view" component={View} />
-            <PrivateRoute path="/logout" render={props => <Logout {...props} onLoggedOut={onLoggedOut} />} />
+            <PrivateRoute path="/logout" render={props => <Logout key={Date.now()} {...props} onLoggedOut={onLoggedOut} />} />
             <Route path="/login" render={props => <Login {...props} onLoggedIn={onLoggedIn} />} />
             <Route exact path="/" render={props => <Login {...props} onLoggedIn={onLoggedIn} />} />
           </Switch>

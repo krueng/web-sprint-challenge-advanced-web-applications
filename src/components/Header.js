@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Header = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem("token")));
+const Header = ({ isLoggedIn }) => {
 
-    return (
-        <Router>
-            <HeaderStyle>
-                <p>Blogger Pro</p>
-                <MenuStyle>
-                    {isLoggedIn ? null : <li><Link to="/login">Login</Link></li>}
-                    {isLoggedIn ? <li><Link to="/view">View</Link></li> : null}
-                    {isLoggedIn ? <li><Link to="/logout">Logout</Link></li> : null}
-                </MenuStyle>
-            </HeaderStyle>
-        </Router>
-    );
+return (
+    <HeaderStyle>
+        <p>Blogger Pro</p>
+        <MenuStyle>
+            {isLoggedIn ? null : <li><Link to="/login">Login</Link></li>}
+            {isLoggedIn ? <li><Link to="/view">View</Link></li> : null}
+            {isLoggedIn ? <li ><Link to="/logout">Logout</Link></li> : null}
+        </MenuStyle>
+    </HeaderStyle>
+);
 }
 
 export default Header;

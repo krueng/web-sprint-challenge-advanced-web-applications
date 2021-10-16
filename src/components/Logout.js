@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Logout = (props) => {
-
-    console.log({props})
-
     useEffect(() => {
         axiosWithAuth()
             .post('/logout')
@@ -15,8 +12,7 @@ const Logout = (props) => {
             }).catch(err => {
                 console.log(err);
             })
-        // eslint-disable-next-line        
-    }, []);
+    }, [props.onLoggedOut, props.history]);
 
     return (<div></div>);
 }
