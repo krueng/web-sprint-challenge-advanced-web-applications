@@ -43,22 +43,22 @@ In this project, you will demonstrate your mastery of these skills by creating *
 * [x] Display an appropriate error message when login is not successful.
 
 ### Route Authentication
-* [] Build a `PrivateRoute` component within the components folder.
-* [] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
-* [] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
+* [x] Build a `PrivateRoute` component within the components folder.
+* [x] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
+* [x] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
 
 ### Request Authentication
 > *Complete the requests needed to execute all CRUD functions.*
 * [x] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header.
-* [] Complete the `services/articleService.js` module. It should use make an authenticated call to retrieve and return all articles from the server.
+* [x] Complete the `services/articleService.js` module. It should use make an authenticated call to retrieve and return all articles from the server.
 
-* [] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
+* [x] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
 
-* [] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
+* [x] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
 
-* [] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
+* [x] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
 
-* [] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
+* [x] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
 
 
 ### Logout Authentication
@@ -68,13 +68,13 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 ### Advanced Testing
 > *Add the following tests within Article.test.js.*
-* [] Build a test that shows the `Article` component, given the correct props, can render without errors.
-* [] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
-* [] The `Article` component should display "Associated Press" when an author attribute is not available. Build a test that verifies that that is true.
-* [] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
+* [x] Build a test that shows the `Article` component, given the correct props, can render without errors.
+* [x] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
+* [x] The `Article` component should display "Associated Press" when an author attribute is not available. Build a test that verifies that that is true.
+* [x] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
 
 > *Add the following tests within View.test.js.*
-* [] Build a test that shows the `View` component can render zero articles without errors. Make sure the mock service called made when View mounts.
+* [x] Build a test that shows the `View` component can render zero articles without errors. Make sure the mock service called made when View mounts.
 * [] Build a test that shows the `View` component can render three articles without errors. Make sure the mock service called made when View mounts.
 
 ## Important Notes:
@@ -121,9 +121,14 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers to the questions within `interview_answers.md` file. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
 1. Explain what a token is used for.
-
+- A little piece of data stored in users' computers to authenticated to server
+​
 2. What steps can you take in your web apps to keep your data secure?
-
+- Keep everything uptodate, scan for vulnerability, sanitize user input.
+- Keep data encrypt, maitain security during the development, apply authentication
+​
 3. Describe how web servers work.
-
+- Its a back-and-forth communication between user and web server. At the most basic lavel whenever a user browse the web a file that is hosted on the server is requested, after the server process the request then it sent back to the user.
+​
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+- Create (PUT, POST), Read (GET), Update (PUT, existing), Delete (DELETE)
